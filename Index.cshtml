@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<body>
+    <div class="htmlstuff">
+        <h2>A basic HTML table</h2>
+
+        <table style="width:100%">
+            <tr>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
+            </tr>
+            <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+            </tr>
+            <tr>
+                <td>Centro comercial Moctezuma</td>
+                <td>Francisco Chang</td>
+                <td>Mexico</td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="mt-5">
+        <button class="btn btn-primary" id="btngenerate">Generate Pdf</button>
+    </div>
+</body>
+<script type="text/javascript">
+    $("#btngenerate").click(function () {
+
+        var htmldata = $(".htmlstuff").html();
+        htmldata = htmldata.replace(/</g, "strtTag").replace(/>/g, "EndTag");
+        window.location = window.location.origin + '/Home/GeneratePdf?html=' + htmldata;
+    });
+
+</script>
+</html>
+
